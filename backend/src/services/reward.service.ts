@@ -15,7 +15,7 @@ class RewardService {
 
   public async getAllRewards(id:string): Promise<IRewardHistory[]> {
     try {
-      return await RewardHistory.find({givenBy:id});
+      return await RewardHistory.find({givenTo:id});
     } catch (error: any) {
       throw new CustomError(HttpStatusCode.INTERNAL_SERVER, error.message);
     }
@@ -24,7 +24,7 @@ class RewardService {
 
   public async getAllpoints(id:string): Promise<IRewardHistory[]> {
     try {
-      return await RewardHistory.find({givenTo:id});
+      return await RewardHistory.find({givenBy:id});
     } catch (error: any) {
       throw new CustomError(HttpStatusCode.NOT_FOUND, error.message);
     }
